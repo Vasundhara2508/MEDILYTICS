@@ -69,7 +69,7 @@ _SPARK_COMPONENT = """<!DOCTYPE html>
   if(old3) old3.remove();
   var cs = pdoc.createElement('style');
   cs.id  = styleId;
-  cs.textContent = 'body { cursor: none !important; }';
+  cs.textContent = '*, *::before, *::after { cursor: none !important; }';
   pdoc.head.appendChild(cs);
 
   /* ── Particle pool ── */
@@ -527,7 +527,7 @@ def show_login():
 
     # ── Inject cursor spark canvas into PARENT window via iframe ─────────────
     # height=1 ensures the iframe is mounted; JS then works in parent DOM
-    
+    components.html(_SPARK_COMPONENT, height=1, scrolling=False)
 
     # ── Layout ────────────────────────────────────────────────────────────────
     _, col, _ = st.columns([1, 1.3, 1])
